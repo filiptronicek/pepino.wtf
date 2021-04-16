@@ -15,7 +15,7 @@ export default function IndexPage() {
       !latestActivity && fetch("/api/fetch").then((res) => res.json()).then(res => setLatestActivity(res));
     });
 
-    const loader = ((
+    const loader = (
         <SkeletonTheme color={
                 dark ? "#374151" : "#E8E8E8"
             }
@@ -25,7 +25,7 @@ export default function IndexPage() {
             <Skeleton count={1}
                 width={300}/>
         </SkeletonTheme>
-    ));
+    );
 
     return (
         <div className="flex flex-col items-center justify-center space-y-12">

@@ -1,15 +1,24 @@
 import Image from "next/image";
 import { PrimaryButton } from '@fluentui/react';
+import Picker from 'emoji-picker-react';
+import { IconButton } from '@fluentui/react/lib/Button';
 
 import {useState} from 'react';
 
 export default function AboutPage() {
-
     const [location, setLocation] = useState("Home");
     const [activity, setActivity] = useState("");
     const [emoji, setEmoji] = useState("");
 
+    const [emojiPickerEnabled, setEmojiPickerEnabled] = useState(false);
 
+    const [chosenEmoji, setChosenEmoji] = useState(null);
+
+    const onEmojiClick = (event, emojiObject) => {
+        setEmoji(emojiObject.emoji);
+        setChosenEmoji(emojiObject);
+    };
+  
     return (
         <div className="grid md:grid-cols-2 gap-6 grid-cols-1">
             <div>
@@ -26,13 +35,17 @@ export default function AboutPage() {
                         <br />
                         <label>
                             How would you express that with an emoji?
-                            <input onChange={(evt) => setEmoji(evt.target.value)} value={emoji} className="ml-4 border-4 w-8" type="text"/>
+                            <input onChange={(evt) => setEmoji(evt.target.value)} value={emoji || ""} className="ml-4 border-4 w-8" type="text"/>
+                            <IconButton iconProps={{iconName: 'Emoji2'}} title="Emoji" onClick={() => setEmojiPickerEnabled(!emojiPickerEnabled)} ariaLabel="Emoji" />
+
+                            {emojiPickerEnabled ? (<Picker onEmojiClick={onEmojiClick} />) : ""}
                         </label>
                         <br />
                         <label>
                             Where are you currently located?
                             <input className="ml-4 border-4" type="text" onChange={(evt) => setLocation(evt.target.value)} value={location} />
                         </label>
+                        <br />
                         <PrimaryButton className="mt-7" text="Save" allowDisabledFocus disabled={false} />
                         <br />
                         {JSON.stringify(
@@ -47,7 +60,8 @@ export default function AboutPage() {
                 </section>
             </div>
 
-            <Image alt="A one-eyed alien holding a broken cable connected between a server and a desktop computer" src="/critter.svg"
+            <Image
+                src="/receipt.svg"
                 width={476}
                 height={297.17}/>
         </div>
