@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/taylorbryant/next-starter-tailwind#readme",
   "dependencies": {
+    "@fluentui/react": "^8.11.0",
     "dayjs": "^1.10.4",
     "next": "10.1.2",
     "node-fetch": "^2.6.1",
