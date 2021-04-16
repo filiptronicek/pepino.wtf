@@ -27,8 +27,6 @@ export default function IndexPage() {
         </SkeletonTheme>
     ));
 
-    const formatter = new Intl.RelativeTimeFormat('en', { numeric: 'auto' });
-
     return (
         <div className="flex flex-col items-center justify-center space-y-12">
             <h2 className="p-3 font-bold bg-yellow-300 md:text-2xl">
