@@ -1,7 +1,6 @@
 import Image from "next/image";
 import { PrimaryButton } from '@fluentui/react';
 import Picker from 'emoji-picker-react';
-import { IconButton } from '@fluentui/react/lib/Button';
 
 import {useState} from 'react';
 
@@ -14,7 +13,7 @@ export default function AboutPage() {
 
     const [chosenEmoji, setChosenEmoji] = useState(null);
 
-    const onEmojiClick = (event, emojiObject) => {
+    const onEmojiClick = (_event, emojiObject) => {
         setEmoji(emojiObject.emoji);
         setChosenEmoji(emojiObject);
     };
@@ -36,8 +35,7 @@ export default function AboutPage() {
                         <label>
                             How would you express that with an emoji?
                             <input onChange={(evt) => setEmoji(evt.target.value)} value={emoji || ""} className="ml-4 border-4 w-8" type="text"/>
-                            <IconButton iconProps={{iconName: 'Emoji2'}} title="Emoji" onClick={() => setEmojiPickerEnabled(!emojiPickerEnabled)} ariaLabel="Emoji" />
-
+                            <PrimaryButton iconProps={{iconName: 'CompassNW'}} title="Emoji" onClick={() => setEmojiPickerEnabled(!emojiPickerEnabled)} ariaLabel="Emoji"><svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg> </PrimaryButton>
                             {emojiPickerEnabled ? (<Picker onEmojiClick={onEmojiClick} />) : ""}
                         </label>
                         <br />
