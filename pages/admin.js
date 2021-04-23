@@ -17,6 +17,12 @@ export default function AboutPage() {
         setEmoji(emojiObject.emoji);
         setChosenEmoji(emojiObject);
     };
+
+    const sendActivity = () => {
+        fetch(encodeURI(`/api/update?title=${encodeURI(activity)}&emoji=${encodeURI(emoji)}&location=${encodeURI(location)}`)).then(res => res.json()).then(res => {
+            console.log(res);
+        });
+    };
   
     return (
         <div className="grid md:grid-cols-2 gap-6 grid-cols-1">
@@ -44,7 +50,7 @@ export default function AboutPage() {
                             <input className="ml-4 border-4" type="text" onChange={(evt) => setLocation(evt.target.value)} value={location} />
                         </label>
                         <br />
-                        <PrimaryButton className="mt-7" text="Save" allowDisabledFocus disabled={false} />
+                        <PrimaryButton className="mt-7" text="Save" onClick={() => {sendActivity()}} allowDisabledFocus disabled={false} />
                         <br />
                         {JSON.stringify(
                             {
