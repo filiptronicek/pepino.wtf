@@ -41,7 +41,7 @@ export default function IndexPage() {
                     !latestActivity ? loader : latestActivity.activity
                 } </span>
                 <div className="text-xl">
-                  <span>{latestActivity ? `📌 ${latestActivity.place}` : ""}</span> <br />
+                  <span>{latestActivity ? `📌 ${latestActivity.location}` : ""}</span> <br />
                   <span>{latestActivity ? `⏰ ${dayjs().to(latestActivity.time)}` : ""}</span>
                 </div>
             </div>
