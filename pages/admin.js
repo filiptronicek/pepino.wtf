@@ -7,16 +7,7 @@ export default function AboutPage() {
     const [location, setLocation] = useState("Home");
     const [activity, setActivity] = useState("");
     const [emoji, setEmoji] = useState("");
-
-    const [emojiPickerEnabled, setEmojiPickerEnabled] = useState(false);
-
-    const [chosenEmoji, setChosenEmoji] = useState(null);
-
-    const onEmojiClick = (_event, emojiObject) => {
-        setEmoji(emojiObject.emoji);
-        setChosenEmoji(emojiObject);
-    };
-
+    
     const sendActivity = () => {
         fetch(encodeURI(`/api/update?title=${encodeURI(activity)}&emoji=${encodeURI(emoji)}&location=${encodeURI(location)}`)).then(res => res.json()).then(res => {
             console.log(res);
