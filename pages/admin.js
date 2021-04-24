@@ -48,15 +48,6 @@ export default function AboutPage() {
                         </label>
                         <br />
                         <PrimaryButton className="mt-7" text="Save" onClick={() => {sendActivity()}} allowDisabledFocus disabled={false} />
-                        <br />
-                        {JSON.stringify(
-                            {
-                                activity,
-                                location,
-                                emoji,
-                                time: Date.now()
-                            }
-                        , null, 2)}
                     </form>
                 </section>
             </div>
