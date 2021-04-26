@@ -1,5 +1,9 @@
 import Image from "next/image";
 import { PrimaryButton } from '@fluentui/react';
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
+
+const MySwal = withReactContent(Swal);
 
 import {useState, useEffect} from 'react';
 
@@ -11,7 +15,13 @@ export default function AboutPage() {
     const [token, setToken] = useState('');
     
     const sendActivity = () => {
-        fetch(encodeURI(`/api/update?title=${encodeURI(activity)}&emoji=${encodeURI(emoji)}&location=${encodeURI(location)}&token=${token}`)).then(res => res.json()).then(res => {
+        fetch(encodeURI(`/api/update?title=${encodeURI(activity)}&emoji=${encodeURI(emoji)}&location=${encodeURI(location)}&token=${token}`)).then(res => {
+            if (res.ok) {
+                return res.json();
+            } else {
+                MySwal.fire(<p>Bad token :(</p>)
+            }
+        }).then(res => {
             console.log(res);
         });
     }; 
