@@ -19,7 +19,10 @@ export default function AboutPage() {
             if (res.ok) {
                 return res.json();
             } else {
-                MySwal.fire(<p>Bad token :(</p>);
+                MySwal.fire(<p>Bad token :(</p>).then(() => {
+                    localStorage.removeItem('token');
+                    window.location.reload();
+                })
             }
         }).then(res => {
             console.log(res);
