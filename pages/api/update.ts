@@ -13,6 +13,6 @@ export default (request: VercelRequest, response: VercelResponse) : void => {
       response.status(200).send(res);
     }))
   } else {
-    response.status(403).send("Not allowed. Token invalid.")
+    response.status(403).send({result: "error", message: "Not allowed. Token invalid."});
   }
 }

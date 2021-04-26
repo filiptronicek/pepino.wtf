@@ -11,7 +11,7 @@ export default function AboutPage() {
     const [token, setToken] = useState('');
     
     const sendActivity = () => {
-        fetch(encodeURI(`/api/update?title=${encodeURI(activity)}&emoji=${encodeURI(emoji)}&location=${encodeURI(location)}&token=`)).then(res => res.json()).then(res => {
+        fetch(encodeURI(`/api/update?title=${encodeURI(activity)}&emoji=${encodeURI(emoji)}&location=${encodeURI(location)}&token=${token}`)).then(res => res.json()).then(res => {
             console.log(res);
         });
     }; 
@@ -26,12 +26,6 @@ export default function AboutPage() {
             }
         }
     });
-
-    const onChange = event => {
-      localStorage.setItem('token', event.target.value);
-   
-      setToken(event.target.value);
-    };
 
     return (
         <div className="grid md:grid-cols-2 gap-6 grid-cols-1">
