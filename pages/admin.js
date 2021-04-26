@@ -19,7 +19,7 @@ export default function AboutPage() {
             if (res.ok) {
                 return res.json();
             } else {
-                MySwal.fire(<p>Bad token :(</p>)
+                MySwal.fire(<p>Bad token :(</p>);
             }
         }).then(res => {
             console.log(res);
