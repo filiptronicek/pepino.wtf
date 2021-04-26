@@ -3,7 +3,7 @@ import fetch from 'node-fetch';
 
 const sha256 = require('js-sha256');
 
-require('dotenv').config();
+!process.env.AUTH_TOKEN && require('dotenv').config();
 
 export default (request: VercelRequest, response: VercelResponse) : void => {
   const providedToken = request.query.token;
