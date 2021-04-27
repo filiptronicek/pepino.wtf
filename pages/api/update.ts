@@ -13,7 +13,6 @@ export default (request: VercelRequest, response: VercelResponse) : void => {
       response.status(200).send(res);
     }))
   } else {
-    console.log(`Provided: ${providedToken}, expected: ${process.env.AUTH_TOKEN}`);
     response.status(403).send({result: "error", message: "Not allowed. Token invalid."});
   }
 }
