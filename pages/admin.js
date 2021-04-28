@@ -17,12 +17,15 @@ export default function AboutPage() {
     const sendActivity = () => {
         fetch(encodeURI(`/api/update?title=${encodeURI(activity)}&emoji=${encodeURI(emoji)}&location=${encodeURI(location)}&token=${token}`)).then(res => {
             if (res.ok) {
+                MySwal.fire(<p>Successfully updated</p>).then(() => {
+                    window.location.reload();
+                });
                 return res.json();
             } else {
                 MySwal.fire(<p>Bad token :(</p>).then(() => {
                     localStorage.removeItem('token');
                     window.location.reload();
-                })
+                });
             }
         }).then(res => {
             console.log(res);
